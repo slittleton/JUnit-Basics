@@ -22,4 +22,8 @@ public class MathUtils {
 		return Math.PI * radius * radius;
 	}
 
+	public void sayHello() {
+		System.out.println("Hello");
+	}
+
 }

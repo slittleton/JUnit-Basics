@@ -1,0 +1,85 @@
+JUNIT 5
+
+Platform (3 parts)
+1. JUnit API is called Jupiter 
+	model in JUnit
+	Extension model
+2. for running old test use Vintage
+3.there are also 3rd party extensions
+
+IDEs use the JUnit 5 Platform with tools to do testing
+
+
+
+Some Assert Methods
+
+assertEquals(expected, actual, "optional string message")
+assertArrayEquals(expectedArray, actualArray)
+assertIterableEquals(expectedArray, actualArray)
+assertTrue(boolean condition, String message)
+assertFalse(boolean condition, String message)
+
+note* the message part can be replaced with a lambda
+
+
+Test Driven Development
+write test first and then code
+
+Lifecycle Hooks
+@BeforeAll (must be static)
+@AfterAll (must be static)
+@BeforeEach
+@AfterEach
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+	creates one instance of test class instead of an instance 	for each test method. Goes at top above class name
+
+
+Annotations to scale your tests
+@DisplayName 
+- put above method, allows you to specify what the displayed name should be for the test in the test output window
+@Disabled
+-
+
+
+Conditional Execution
+- allows you to control the execution of tests
+- you can decide to execute test in specific situations
+@EnabledOnOs(OS.LINUX)
+@EnabledOnJre(JRE.JAVA_11)
+@EnabledIfSystemProperty
+@EnabledIfEnvironmentVariable
+
+
+Handling external factors using assumptions
+assumeTrue(valueToTest);
+
+Running multiple assertions with a series of lambdas as args
+assertAll(
+	()-> lamdatest1(arg1, arg2),
+	()-> lamdatest2(arg1, arg2),
+	()-> lamdatest3(arg1, arg2),
+	);
+
+
+Nested Test Classes
+Group multiple tests for a method
+makes organization easier
+
+@Nested
+
+
+Repeated Tests
+@Repeated(3)
+takes arg for how many times to repeat test
+
+Tagging
+lets you tag tests with words so that you can select and run tests that 
+only have that specific tag
+@Tag("TagNameString")
+ex - in eclipse: run ad-> run config -> config tags-> include tags ("tags you want to run")
+
+
+JUnit 5 has dependency inject which you can see when you use
+TestInfo and TestReporter interfaces
+
